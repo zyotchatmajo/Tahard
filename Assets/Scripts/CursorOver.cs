@@ -4,18 +4,14 @@ using UnityEngine;
 
 public class CursorOver : MonoBehaviour
 {
-    float speed = 1;
-    bool mouseOver = false;
-    public Color start;
-    public Color end;
-    void OnMouseEnter() {
-        mouseOver = true;
-        transform.Rotate(speed, 0, 0);
-    }
+    Ray ray;
+    RaycastHit hit;
 
-    void OnMouseExit() {
-        mouseOver = false;
-        transform.Rotate(0, 0, 0);
+    void Update() {
+        ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        if (Physics.Raycast(ray, out hit)) {
+            Debug.Log("Hola");
+        }
     }
 
 }
